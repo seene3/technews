@@ -1,4 +1,4 @@
-package com.technews.Model;
+package com.technews.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -10,6 +10,7 @@ import java.util.Objects;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "vote")
 public class Vote implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -57,14 +58,16 @@ public class Vote implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Vote)) return false;
         Vote vote = (Vote) o;
-        return Objects.equals(id, vote.id) && Objects.equals(userId, vote.userId) && Objects.equals(postId, vote.postId);
+        return Objects.equals(getId(), vote.getId()) &&
+                Objects.equals(getUserId(), vote.getUserId()) &&
+                Objects.equals(getPostId(), vote.getPostId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, postId);
+        return Objects.hash(getId(), getUserId(), getPostId());
     }
 
     @Override
