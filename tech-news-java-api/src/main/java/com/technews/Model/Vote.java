@@ -1,4 +1,4 @@
-package com.technews.model;
+package com.technews.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
